@@ -215,7 +215,7 @@ namespace chachacha_server.HTTP
                         canPresent = false,
                         gold = 1000000,
                         trophyCnt = 1000000,
-                        characterNo = 0,
+                        characterNo = 2,
                         carNo = 1,
                         carSeq = 0,
                         carClass = "S",
@@ -268,7 +268,7 @@ namespace chachacha_server.HTTP
                             userId = "1",
                             accountSeq = 2,
                             boastReject = false,
-                            score = 0,
+                            score = 521254,
                             sentPresent = false,
                             canPresent = true,
                             carX = 0,
@@ -277,8 +277,8 @@ namespace chachacha_server.HTTP
                             carNo = 3,
                             gameMode = "001",
                             grade = "001",
-                            isDormancy = true,
-                            matchRejectFlag = true
+                            isDormancy = false,
+                            matchRejectFlag = false
                         }
                     ],
                     friendsCount = 1
@@ -361,8 +361,23 @@ namespace chachacha_server.HTTP
                     [
                         new CharacterDTO
                         {
-                            isSelected = true,
+                            isSelected = false,
                             characterNo = 1
+                        },
+                        new CharacterDTO
+                        {
+                            isSelected = false,
+                            characterNo = 2
+                        },
+                        new CharacterDTO
+                        {
+                            isSelected = false,
+                            characterNo = 3
+                        },
+                        new CharacterDTO
+                        {
+                            isSelected = true,
+                            characterNo = 4
                         }
                     ]
                 };
@@ -454,6 +469,43 @@ namespace chachacha_server.HTTP
                             used = false
                         }
                     ]
+                };
+
+                ResponceProcessBinary(ctx, res.ToUTF8ByteArray(aes), HttpStatusCode.OK);
+                return;
+            }
+            else if (urlPath == HTTPPath.SelectUserCar)
+            {
+                HTTPResponce res = new HTTPResponce
+                {
+                    success = true,
+                    token = 123456789
+                };
+
+                ResponceProcessBinary(ctx, res.ToUTF8ByteArray(aes), HttpStatusCode.OK);
+                return;
+            }
+            else if (urlPath == HTTPPath.SelectChar)
+            {
+                HTTPResponce res = new HTTPResponce
+                {
+                    success = true,
+                    token = 123456789
+                };
+
+                ResponceProcessBinary(ctx, res.ToUTF8ByteArray(aes), HttpStatusCode.OK);
+                return;
+            }
+            else if (urlPath == HTTPPath.FinishGame)
+            {
+                GameFinishDTO res = new GameFinishDTO
+                {
+                    success = true,
+                    token = 123456789,
+                    matchNo = 0,
+                    remainGoldAmt = 1000000,
+                    remainTireCnt = 1000000,
+                    missions = new int[0]
                 };
 
                 ResponceProcessBinary(ctx, res.ToUTF8ByteArray(aes), HttpStatusCode.OK);

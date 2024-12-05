@@ -15,6 +15,7 @@ namespace chachacha_server.HTTP.DAO
     {
         public bool success;
         public string? errorCode;
+        public long token;
 
         /// <summary>
         /// Json 문자열을 UTF8 바이트 배열로
@@ -64,11 +65,10 @@ namespace chachacha_server.HTTP.DAO
 
     class LoginDataDTO : HTTPResponce
     {
-        public long token;
         public required string cryptoKey;
         public required string initialVector;
         public required string blockExpire;
-        public LoginResult result;
+        public required LoginResult result;
     }
 
     class UserInfoMDTO
@@ -114,7 +114,6 @@ namespace chachacha_server.HTTP.DAO
     }
     class UserInfoDTO : HTTPResponce
     {
-        public required long token;
         public required UserInfoMDTO info;
     }
 
@@ -138,7 +137,6 @@ namespace chachacha_server.HTTP.DAO
 
     class RankInfoDTO : HTTPResponce
     {
-        public long token;
         public required FriendInfoDTO[] friends;
         public int friendsCount;
     }
@@ -164,7 +162,6 @@ namespace chachacha_server.HTTP.DAO
 
     class VersusListDTO : HTTPResponce
     {
-        public long token;
         public required MatchesDTO[] matches;
     }
 
@@ -180,13 +177,11 @@ namespace chachacha_server.HTTP.DAO
     }
     class CarListDTO : HTTPResponce
     {
-        public long token;
         public required CarDTO[] cars;
     }
 
     class GiveEventCarDTO : HTTPResponce
     {
-        public long token;
         public long carSeq;
     }
 
@@ -198,7 +193,6 @@ namespace chachacha_server.HTTP.DAO
 
     class UserCharacterListDTO : HTTPResponce
     {
-        public long token;
         public required CharacterDTO[] characters;
     }
 
@@ -210,7 +204,6 @@ namespace chachacha_server.HTTP.DAO
 
     class ItemListDTO : HTTPResponce
     {
-        public long token;
         public required ShopItem[] items;
     }
 
@@ -223,7 +216,6 @@ namespace chachacha_server.HTTP.DAO
 
     class InviteListDTO : HTTPResponce
     {
-        public long token;
         public required Invite[] invitations;
     }
 
@@ -231,14 +223,13 @@ namespace chachacha_server.HTTP.DAO
     {
         public long presentSeq;
         public long accountSeq;
-        public string presentType;
+        public required string presentType;
         public long presentQty;
-        public string recvDate;
+        public required string recvDate;
         public bool FindPresent;
     }
     class GiftListDTO : HTTPResponce
     {
-        public long token;
         public required Gift[] presents;
     }
 
@@ -253,7 +244,6 @@ namespace chachacha_server.HTTP.DAO
     }
     class GrandPrixInfoDTO : HTTPResponce
     {
-        public long token;
         public required string status;
         public required GrandPrixBestScore bestScore;
         public required string joinDate;
@@ -267,9 +257,16 @@ namespace chachacha_server.HTTP.DAO
 
     class GameStartDTO : HTTPResponce
     {
-        public long token;
         public long raceValue;
         public required int[] missions;
         public required GameStartItem[] items;
+    }
+
+    class GameFinishDTO : HTTPResponce
+    {
+        public long remainGoldAmt;
+        public long remainTireCnt;
+        public long matchNo;
+        public required int[] missions;
     }
 }

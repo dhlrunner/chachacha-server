@@ -22,5 +22,8 @@ namespace chachacha_server.HTTP
         public static string GetGiftList = "/tire/present/list";
         public static string GetGrandPrixInfo = "/event/grandprix/info";
         public static string StartGame = "/play/game/start";
+        public static string SelectUserCar = "/user/car/select";
+        public static string SelectChar = "/user/character/select";
+        public static string FinishGame = "/play/game/finish";
     }
 }
